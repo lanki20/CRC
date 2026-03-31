@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兒童權利小專欄：從新聞看見我們的權利</title>
+    <!-- 引入 Tailwind CSS 以進行快速且美觀的排版 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Lucide Icons 以獲取高畫質圖示 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            background-color: #FFFBEB; /* 溫暖的背景色 */
+            color: #334155;
+        }
+
+        /* 讓 CRC 展開區塊有平滑的過渡動畫 */
+        .crc-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+        
+        .crc-content.open {
+            max-height: 800px; /* 根據內容調整 */
+            opacity: 1;
+        }
+
+        /* 確保動態生成的真實圖片能完美填滿版面，並加入 Hover 放大效果 */
+        .real-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .group:hover .real-image-container img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="antialiased pb-16">
+
+    <!-- 頂部橫幅 -->
+    <header class="bg-gradient-to-r from-amber-400 to-orange-400 text-white py-12 px-4 shadow-md rounded-b-[3rem] mb-10 relative overflow-hidden">
+        <!-- 作者標註 -->
+        <div class="absolute top-4 right-6 md:top-6 md:right-10 text-white/90 font-bold tracking-wider bg-white/20 px-3 py-1 rounded-full text-sm backdrop-blur-sm z-20">
+            @王稜吟
+        </div>
+        
+        <!-- 裝飾用圖示 -->
+        <i data-lucide="star" class="absolute top-6 left-10 text-white/20 w-16 h-16"></i>
+        <i data-lucide="sun" class="absolute bottom-4 right-10 text-white/20 w-24 h-24"></i>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-wide drop-shadow-md">從新聞看我自己</h1>
+            <p class="text-xl md:text-2xl font-bold bg-white/20 inline-block px-6 py-2 rounded-full backdrop-blur-sm">從最近新聞看見：安全、保護與和平</p>
+            <p class="mt-6 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+                這不是冷冰冰的法律課，而是幾則和我們生活有關的新聞。<br class="hidden md:block">
+                每一則都在提醒大家：孩子不只是需要被照顧，<span class="text-yellow-100 underline decoration-wavy decoration-2">也有應該被尊重的權利。</span>
+            </p>
+        </div>
+    </header>
+
+    <!-- 主要內容區 -->
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+        <!-- 第一則：虐童 -->
+        <article class="bg-white rounded-3xl shadow-lg border-t-8 border-rose-400 overflow-hidden transform transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div class="flex flex-col md:flex-row p-6 md:p-8 gap-6 md:gap-8 items-start">
+                <!-- 視覺插圖區 -->
+                <div class="w-full md:w-1/3 shrink-0 rounded-2xl overflow-hidden aspect-video md:aspect-square flex items-center justify-center bg-gray-100 real-image-container shadow-inner relative group">
+                    <img src="images/story1.png" alt="虐童新聞示意圖" onerror="this.src='https://placehold.co/800x800/ffe4e6/be123c?text=請將圖片存為\\nimages/story1.png'">
+                </div>
+                
+                <!-- 文字內容區 -->
+                <div class="w-full md:w-2/3">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-rose-100 text-rose-700 px-4 py-1.5 rounded-full text-sm font-black tracking-wider">虐童｜保護權</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-black mb-4 text-gray-800">一個沒說出口的求救訊號</h2>
+                    <div class="space-y-4 text-gray-600 leading-relaxed text-lg">
+                        <p>最近台灣社會又談起一件讓人很心痛的案件：男童「剴剴」被照顧者長期虐待，法院在 2026 年 1 月的二審，仍維持重判。這則新聞讓很多大人重新思考：如果一個孩子受傷、害怕，為什麼沒有更早被救出來？</p>
+                        <p>對五年級的我們來說，可以把它想成一個重要提醒：每個孩子都有被安全照顧的權利，不可以被打、被罵、被羞辱，也不該被大人當成出氣筒。當我們看到同學身上常有奇怪傷痕，或聽見有人一直說自己很怕回家，這些都可能是求救訊號。保護孩子，不只是家人的事，也是整個社會的責任。</p>
+                    </div>
+
+                    <!-- CRC 互動區 -->
+                    <div class="mt-6 border-2 border-rose-200 rounded-2xl overflow-hidden">
+                        <button onclick="toggleCRC('crc1')" class="w-full bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold p-4 flex justify-between items-center transition-colors">
+                            <span class="flex items-center gap-2"><i data-lucide="search" class="w-5 h-5"></i> 點我看看對應了《兒童權利公約》哪一條？</span>
+                            <i data-lucide="chevron-down" id="icon-crc1" class="w-5 h-5 transform transition-transform duration-300"></i>
+                        </button>
+                        <div id="crc1" class="crc-content bg-white px-6">
+                            <div class="py-4 space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <span class="bg-rose-500 text-white rounded-full w-8 h-8 flex items-center justify-center shrink-0 font-bold mt-1">19</span>
+                                    <div>
+                                        <h4 class="font-bold text-rose-800 text-lg">第 19 條：免於暴力侵害的權利</h4>
+                                        <p class="text-gray-600">國家應該保護兒童，在受父母、法定監護人或其他照顧者照顧時，不受到任何形式的身心暴力、傷害、虐待、疏忽或剝削。這代表大人絕對不可以打罵或用錯誤的方式傷害孩子。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 第二則：網路安全 -->
+        <article class="bg-white rounded-3xl shadow-lg border-t-8 border-emerald-400 overflow-hidden transform transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div class="flex flex-col md:flex-row p-6 md:p-8 gap-6 md:gap-8 items-start">
+                <!-- 視覺插圖區 -->
+                <div class="w-full md:w-1/3 shrink-0 rounded-2xl overflow-hidden aspect-video md:aspect-square flex items-center justify-center bg-gray-100 real-image-container shadow-inner relative group">
+                    <img src="images/story2.png" alt="網路安全示意圖" onerror="this.src='https://placehold.co/800x800/d1fae5/047857?text=請將圖片存為\\nimages/story2.png'">
+                </div>
+                
+                <!-- 文字內容區 -->
+                <div class="w-full md:w-2/3">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-emerald-100 text-emerald-700 px-4 py-1.5 rounded-full text-sm font-black tracking-wider">網路安全｜健康發展權</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-black mb-4 text-gray-800">手機裡的無限溜滑梯</h2>
+                    <div class="space-y-4 text-gray-600 leading-relaxed text-lg">
+                        <p>巴西最近通過新的兒少網路保護法，重點很特別：限制無限滑動、自動播放，還要求 16 歲以下的帳號和監護人連結。為什麼？因為有些網路設計就像一座永遠滑不完的溜滑梯，讓人一滑再滑，停不下來。</p>
+                        <p>這件事很像在告訴大家：兒童也有在網路上被保護的權利。好玩的影片、遊戲和社群平台沒有錯，但如果平台故意設計得太黏人，讓人熬夜、分心，甚至看到不適合的內容，就會影響學習和健康。真正好的網路世界，不是把孩子一直留在螢幕前，而是讓大家能安心使用、知道怎麼停下來。</p>
+                    </div>
+
+                    <!-- 歐洲延伸探索區 -->
+                    <div class="mt-6 bg-emerald-50 rounded-2xl p-5 border border-emerald-100">
+                        <h3 class="text-emerald-800 font-bold flex items-center gap-2 mb-2">
+                            <i data-lucide="globe-2" class="w-5 h-5"></i> 延伸探索：歐洲國家怎麼做？
+                        </h3>
+                        <p class="text-gray-600 mb-4 text-base leading-relaxed">其實不只巴西，法國、英國和西班牙等歐洲先進國家，也早就開始限制兒童使用社群媒體的年齡與螢幕時間，以保護大腦發展。你知道這些國家的法律上路後，學校和青少年的生活發生了什麼改變嗎？</p>
+                        
+                        <button onclick="toggleCRC('eu-explore')" class="inline-flex items-center gap-2 text-emerald-700 hover:text-emerald-900 font-bold text-sm bg-white px-4 py-2.5 rounded-full shadow-sm transition-all hover:shadow hover:-translate-y-0.5 border border-emerald-200">
+                            👉 點我研究：歐洲兒童網路保護政策的前因與成效
+                            <i data-lucide="chevron-down" id="icon-eu-explore" class="w-4 h-4 transform transition-transform duration-300"></i>
+                        </button>
+                        
+                        <!-- 展開的探索內容 -->
+                        <div id="eu-explore" class="crc-content bg-white mt-3 rounded-xl border border-emerald-100 px-5">
+                            <div class="py-4 space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-2xl mt-1">🇬🇧</span>
+                                    <div>
+                                        <h4 class="font-bold text-emerald-800">英國：《線上安全法》</h4>
+                                        <p class="text-gray-600 text-sm mt-1">要求社群平台必須主動移除對兒童有害的內容（如危險挑戰），如果平台沒做好，會面臨巨額罰款，確保平台負起保護責任。</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-2xl mt-1">🇫🇷</span>
+                                    <div>
+                                        <h4 class="font-bold text-emerald-800">法國：數位同意權限</h4>
+                                        <p class="text-gray-600 text-sm mt-1">規定 15 歲以下的青少年，必須經過家長同意才能註冊社群媒體。同時也推動在手機內建「家長控制系統」，幫助孩子管理螢幕時間。</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-2xl mt-1">🇪🇸</span>
+                                    <div>
+                                        <h4 class="font-bold text-emerald-800">西班牙：校園手機禁令</h4>
+                                        <p class="text-gray-600 text-sm mt-1">許多地區禁止中小學生在校園內（包含下課時間）使用手機，希望學生把時間拿來和同學面對面互動、玩耍，提升學習專注力。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CRC 互動區 -->
+                    <div class="mt-6 border-2 border-emerald-200 rounded-2xl overflow-hidden">
+                        <button onclick="toggleCRC('crc2')" class="w-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold p-4 flex justify-between items-center transition-colors">
+                            <span class="flex items-center gap-2"><i data-lucide="search" class="w-5 h-5"></i> 點我看看對應了《兒童權利公約》哪一條？</span>
+                            <i data-lucide="chevron-down" id="icon-crc2" class="w-5 h-5 transform transition-transform duration-300"></i>
+                        </button>
+                        <div id="crc2" class="crc-content bg-white px-6">
+                            <div class="py-4 space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <span class="bg-emerald-500 text-white rounded-full w-8 h-8 flex items-center justify-center shrink-0 font-bold mt-1">17</span>
+                                    <div>
+                                        <h4 class="font-bold text-emerald-800 text-lg">第 17 條：獲取適當資訊的權利</h4>
+                                        <p class="text-gray-600">兒童有權從各種國內外媒體獲得資訊。國家應確保這些資訊對兒童的身心健康有益，並保護兒童免於接觸有害的內容（例如：暴力、色情或故意讓人沉迷的演算法設計）。</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="bg-emerald-500 text-white rounded-full w-8 h-8 flex items-center justify-center shrink-0 font-bold mt-1">31</span>
+                                    <div>
+                                        <h4 class="font-bold text-emerald-800 text-lg">第 31 條：休閒與遊戲權</h4>
+                                        <p class="text-gray-600">兒童有休息、休閒以及參與遊戲和文化生活的權利。網路雖然好玩，但如果「無限溜滑梯」剝奪了真實世界的遊戲時間或睡眠時間，就侵犯了這項權利。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 第三則：戰爭 -->
+        <article class="bg-white rounded-3xl shadow-lg border-t-8 border-blue-400 overflow-hidden transform transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div class="flex flex-col md:flex-row p-6 md:p-8 gap-6 md:gap-8 items-start">
+                <!-- 視覺插圖區 -->
+                <div class="w-full md:w-1/3 shrink-0 rounded-2xl overflow-hidden aspect-video md:aspect-square flex items-center justify-center bg-gray-100 real-image-container shadow-inner relative group">
+                    <img src="images/story3.png" alt="戰爭與受教權示意圖" onerror="this.src='https://placehold.co/800x800/dbeafe/1d4ed8?text=請將圖片存為\\nimages/story3.png'">
+                </div>
+                
+                <!-- 文字內容區 -->
+                <div class="w-full md:w-2/3">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-black tracking-wider">戰爭｜生存權與受教育權</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-black mb-4 text-gray-800">書包去哪裡了？</h2>
+                    <div class="space-y-4 text-gray-600 leading-relaxed text-lg">
+                        <p>3 月的國際新聞提到，黎巴嫩戰火升高後，聯合國說平均每天都有相當於「一整班」的兒童死傷。很多孩子離開家，住進臨時避難所；原本上課的學校，也可能突然變成大家躲避危險的地方。</p>
+                        <p>想像一下：早上起床，不是背著書包去上學，而是先想今天能不能安全喝到水、能不能找到家人。這這就是戰爭最殘酷的地方。兒童權利最基本的一條，就是孩子有活下去、平安長大、繼續學習的權利。所以當國際社會談到停火、救援和保護學校時，說的其實不只是大人的政治，也是孩子能不能保住明天。</p>
+                    </div>
+
+                    <!-- CRC 互動區 -->
+                    <div class="mt-6 border-2 border-blue-200 rounded-2xl overflow-hidden">
+                        <button onclick="toggleCRC('crc3')" class="w-full bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold p-4 flex justify-between items-center transition-colors">
+                            <span class="flex items-center gap-2"><i data-lucide="search" class="w-5 h-5"></i> 點我看看對應了《兒童權利公約》哪一條？</span>
+                            <i data-lucide="chevron-down" id="icon-crc3" class="w-5 h-5 transform transition-transform duration-300"></i>
+                        </button>
+                        <div id="crc3" class="crc-content bg-white px-6">
+                            <div class="py-4 space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center shrink-0 font-bold mt-1">6</span>
+                                    <div>
+                                        <h4 class="font-bold text-blue-800 text-lg">第 6 條：生存及發展權</h4>
+                                        <p class="text-gray-600">每個兒童都有與生俱來的生命權。國家應該盡最大努力，確保兒童的生存和健全發展，而戰爭正是對生存權最大的剝奪。</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center shrink-0 font-bold mt-1">28</span>
+                                    <div>
+                                        <h4 class="font-bold text-blue-800 text-lg">第 28 條：受教權</h4>
+                                        <p class="text-gray-600">兒童有受教育的權利。國家應提供免費的義務小學教育。當學校變成避難所或被摧毀，孩子們就失去了背起書包上學的權利。</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center shrink-0 font-bold mt-1">38</span>
+                                    <div>
+                                        <h4 class="font-bold text-blue-800 text-lg">第 38 條：武裝衝突中的保護</h4>
+                                        <p class="text-gray-600">在武裝衝突（戰爭）中，國家必須遵守國際人道法，並採取一切可行措施，保護和照顧受到戰爭影響的兒童。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="max-w-4xl mx-auto px-4 mt-12 text-center">
+        <div class="bg-gray-100 p-6 rounded-2xl text-gray-500 text-sm">
+            <p class="flex items-center justify-center gap-2 font-bold mb-2">
+                <i data-lucide="info" class="w-4 h-4"></i> 參考資料來源
+            </p>
+            <p>新聞改寫參考：中央社（2026/1/27）、AP（2026/3/20）、Reuters（2026/3/18）。</p>
+            <p>本文已依國小五年級閱讀程度改寫，並結合聯合國《兒童權利公約》內容進行延伸教學。</p>
+        </div>
+    </footer>
+
+    <!-- 初始化圖示與展開收合腳本 -->
+    <script>
+        // 初始化 Lucide 圖示
+        lucide.createIcons();
+
+        // 展開/收合 CRC 內容的函數
+        function toggleCRC(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            // 切換開關 class
+            content.classList.toggle('open');
+            
+            // 旋轉箭頭圖示
+            if (icon) {
+                if (content.classList.contains('open')) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
